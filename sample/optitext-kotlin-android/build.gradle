@@ -28,6 +28,8 @@ android {
             minifyEnabled false
             proguardFiles 'proguard-rules.pro'
         }
+        proguard {
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -80,6 +82,9 @@ dependencies {
     // Or comment the dependency above and uncomment the dependency below to
     // use unbundled model that depends on Google Play Services
     // implementation 'com.google.android.gms:play-services-mlkit-text-recognition-korean:16.0.0'
+
+    //entity extraction - text recognition
+    implementation 'com.google.mlkit:entity-extraction:16.0.0-beta4'
 
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.google.guava:guava:27.1-android'

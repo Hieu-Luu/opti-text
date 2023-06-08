@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -41,6 +42,7 @@ android {
     }
     buildFeatures {
         compose true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion "1.4.7"
@@ -56,16 +58,23 @@ dependencies {
     implementation project(':optitext-kotlin-core')
     implementation project(':optitext-kotlin-android')
 
-
     implementation "androidx.core:core-ktx:1.8.0"
+    implementation 'com.google.android.material:material:1.6.1'
     implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.0')
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
+    //COMPOSE
     implementation 'androidx.activity:activity-compose:1.7.2'
+    implementation 'androidx.compose.foundation:foundation:1.4.0'
     implementation platform('androidx.compose:compose-bom:2022.10.00')
     implementation 'androidx.compose.ui:ui'
     implementation 'androidx.compose.ui:ui-graphics'
     implementation 'androidx.compose.ui:ui-tooling-preview'
     implementation 'androidx.compose.material3:material3'
+
+    implementation 'androidx.activity:activity-compose:1.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-compose:2.6.0'
+    implementation "br.com.devsrsouza.compose.icons.android:line-awesome:1.0.0"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -74,6 +83,89 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    // image loader
+    implementation "io.coil-kt:coil:2.2.1"
+
+    // Text features
+    implementation 'com.google.mlkit:text-recognition:16.0.0'
+    // Or comment the dependency above and uncomment the dependency below to
+    // use unbundled model that depends on Google Play Services
+    // implementation 'com.google.android.gms:play-services-mlkit-text-recognition:19.0.0'
+    implementation 'com.google.mlkit:text-recognition-chinese:16.0.0'
+    // Or comment the dependency above and uncomment the dependency below to
+    // use unbundled model that depends on Google Play Services
+    // implementation 'com.google.android.gms:play-services-mlkit-text-recognition-chinese:16.0.0'
+    implementation 'com.google.mlkit:text-recognition-devanagari:16.0.0'
+    // Or comment the dependency above and uncomment the dependency below to
+    // use unbundled model that depends on Google Play Services
+    // implementation 'com.google.android.gms:play-services-mlkit-text-recognition-devanagari:16.0.0'
+    implementation 'com.google.mlkit:text-recognition-japanese:16.0.0'
+    // Or comment the dependency above and uncomment the dependency below to
+    // use unbundled model that depends on Google Play Services
+    // implementation 'com.google.android.gms:play-services-mlkit-text-recognition-japanese:16.0.0'
+    implementation 'com.google.mlkit:text-recognition-korean:16.0.0'
+    // Or comment the dependency above and uncomment the dependency below to
+    // use unbundled model that depends on Google Play Services
+    // implementation 'com.google.android.gms:play-services-mlkit-text-recognition-korean:16.0.0'
+
+    //entity extraction - text recognition
+    implementation 'com.google.mlkit:entity-extraction:16.0.0-beta4'
+
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    //navigation
+    def nav_version = "2.5.2"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //to fix Pending Intent flag, we dont even use workManager, yaaay android
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+
+    //lottie animations
+    def lottie_version = "5.2.0"
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
+    //jetpack preferences datastore (sharedPrefs)
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    implementation 'androidx.datastore:datastore-core:1.0.0'
+
+    //room database
+    def room_version = "2.5.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // Koin main features for Android (Scope,ViewModel ...)
+    implementation "io.insert-koin:koin-android:3.3.2"
+    // Koin core features
+    implementation "io.insert-koin:koin-core:3.3.2"
+
+    //epoxy
+    def epoxyVersion = "4.6.3"
+    implementation "com.airbnb.android:epoxy:$epoxyVersion"
+    // Add the annotation processor if you are using Epoxy's annotations (recommended)
+    kapt "com.airbnb.android:epoxy-processor:$epoxyVersion"
+
+    //Google ML-kit Task extensions
+    //Source: https://github.com/Kotlin/kotlinx.coroutines/tree/master/integration/kotlinx-coroutines-play-services
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
+
+    //image cropper
+    implementation 'com.vanniktech:android-image-cropper:4.5.0'
+
+    //billing
+    def billing_version = "5.0.0"
+    implementation "com.android.billingclient:billing-ktx:$billing_version"
+
+    //in-app review
+    implementation 'com.google.android.play:review-ktx:2.0.1'
+
+    //Icons
+    implementation "br.com.devsrsouza.compose.icons.android:tabler-icons:1.0.0"
+    //google fonts
+    implementation "androidx.compose.ui:ui-text-google-fonts:1.3.3"
 }
 
 configurations {

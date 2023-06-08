@@ -21,8 +21,9 @@ import java.lang.Exception
  * Created by Hieu Luu (neo) on 07/06/2023
  */
 abstract class BaseFragment : Fragment() {
+    // This property is only valid between onCreateView and onDestroyView.
+    var mBinding: ViewBinding? = null
 
-    lateinit var mBinding: ViewBinding
     private lateinit var mActivity: BaseActivity
     lateinit var childViewController: ViewController
 
@@ -42,7 +43,7 @@ abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mBinding = getBinding(inflater, container)
-        return mBinding.root
+        return mBinding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,6 +57,7 @@ abstract class BaseFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         hideLoading()
+        mBinding = null
     }
 
     open fun hideKeyboard() {

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:clipToPadding="false">
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/recycler_view_scans"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_view_snack_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:translationX="-300dp"
+        tools:translationX="0dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/background"
+        app:cardCornerRadius="14dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/loading_outline"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="4dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="9dp">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:trackColor="@android:color/transparent"
+                app:indicatorColor="@color/detail_text_title_color"
+                android:indeterminate="true"
+                app:trackCornerRadius="14dp"
+                app:indicatorSize="30dp"
+                />
+
+            <Space
+                android:layout_width="4dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/detail_text_title_color"
+                android:fontFamily="@font/noto_sans_jp_regular"
+                android:text="@string/scanning_in_progress"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_layout_empty"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/empty_box" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/noto_sans_jp_regular"
+            android:gravity="center"
+            android:text="@string/feels_empty_here_create_some_scans" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_gallery_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/heavy_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/white"
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/ic_round_photo_24"
+        app:tint="@color/white"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="ss" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_camera_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/light_blue"
+        app:layout_constraintBottom_toTopOf="@id/button_gallery_scan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="@color/heavy_blue"
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/ic_round_camera_alt_24"
+        app:tint="@color/heavy_blue"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="ss" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

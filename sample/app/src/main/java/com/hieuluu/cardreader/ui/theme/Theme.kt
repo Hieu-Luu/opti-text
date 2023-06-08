@@ -10,6 +10,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -65,6 +66,58 @@ fun CardReaderTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        content = content
+    )
+}
+
+private val DarkColorPalette = darkColorScheme(
+    primary = HeavyBlue,
+    primaryContainer = TextColorLight,
+    secondary = Color.White,
+    secondaryContainer = MidBlue,
+    onPrimary = LightBlue,
+    background = BackgroundBlue,
+    onSecondary = MidBlue,
+    onSurface = LightBlue,
+    onBackground = LightBlue
+)
+
+private val LightColorPalette = lightColorScheme(
+    primary = LightBlue,
+    primaryContainer = TextColorDark,
+    secondary = Color.Black,
+    secondaryContainer = Color.Transparent,
+    onPrimary = HeavyBlue,
+    background = Color.White,
+    onSecondary = HeavyBlue,
+    onSurface = DarkTextGray,
+    onBackground = HeavyBlue
+
+    /* Other default colors to override
+    background = Color.White,
+    surface = Color.White,
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onBackground = Color.Black,
+    onSurface = Color.Black,
+    */
+)
+
+@Composable
+fun ScanMeTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val colors = if (darkTheme) {
+        DarkColorPalette
+    } else {
+        LightColorPalette
+    }
+
+    MaterialTheme(
+        colorScheme = colors,
+        typography = Typography,
+        shapes = Shapes,
         content = content
     )
 }
