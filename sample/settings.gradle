@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Card Reader"
+rootProject.name = "Scan Me"
 include ':app'
 include ':optitext-kotlin-core'
 include ':optitext-kotlin-android'

@@ -27,6 +27,23 @@
         android:id="@+id/homeScanFragment"
         android:name="com.hieuluu.cardreader.ui.home.HomeScanFragment"
         android:label="HomeScanFragment">
+        <action
+            android:id="@+id/to_detailScanFragment"
+            app:destination="@id/detailScanFragment"/>
     </fragment>
 
+    <fragment
+        android:id="@+id/detailScanFragment"
+        android:name="com.hieuluu.cardreader.ui.detailscan.DetailScanFragment"
+        android:label="DetailScanFragment">
+<!--        <action -->
+<!--            android:id="to_pdfDialogFragment"-->
+<!--            app:destination="@id/pdfDialogFragment" />-->
+        <argument
+            android:name="scan_id"
+            app:argType="integer"/>
+        <argument
+            android:name="is_created"
+            app:argType="integer"/>
+    </fragment>
 </navigation>

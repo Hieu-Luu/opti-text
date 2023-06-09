@@ -18,8 +18,10 @@
 
 package com.hieuluu.cardreader.di
 
+import com.hieuluu.cardreader.ui.detailscan.DetailScanViewModel
 import com.hieuluu.cardreader.ui.home.HomeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.scope.get
 import org.koin.dsl.module
 
 /**
@@ -33,6 +35,14 @@ val viewModelModule = module {
             prefs = get(),
             scanTextFromImageUseCase = get(),
             entityExtractionUseCase = get()
+        )
+    }
+
+    viewModel {
+        DetailScanViewModel(
+            savedStateHandle = get(),
+            scanRepository = get(),
+            filteredModelsRepository = get()
         )
     }
 }

@@ -66,7 +66,7 @@ class HomeScanFragment : Fragment(R.layout.fragment_scan_home) {
 
     private val selectImageRequest = registerForActivityResult(CropImageContract()) { cropResult ->
         if (cropResult.isSuccessful) {
-//            cropResult.uriContent?.let { handleImage(cropResult) }
+            cropResult.uriContent?.let { handleImage(it) }
         }
     }
 
@@ -246,7 +246,7 @@ class HomeScanFragment : Fragment(R.layout.fragment_scan_home) {
         collectFlow(viewModel.events) { homeEvents ->
             when (homeEvents) {
                 is HomeEvents.ShowCurrentScanSaved -> {
-//                    val action = HomeScanFragmentDirections.toDetailScanFragment(homeEvents.id, 1)
+//                    val action = HomeScanFragment.toDetailScanFragment(homeEvents.id, 1)
 //                    findNavController().safeNav(action)
                 }
                 is HomeEvents.ShowLoadingDialog -> {
@@ -259,6 +259,9 @@ class HomeScanFragment : Fragment(R.layout.fragment_scan_home) {
                         message = getString(R.string.no_text_found),
                         anchor = binding.buttonCameraScan
                     )
+                    binding.cardViewLoading.animate().translationX(-1000f)
+                    binding.buttonCameraScan.isEnabled = true
+                    binding.buttonGalleryScan.isEnabled = true
                 }
                 is HomeEvents.ShowUndoDeleteScan -> {
                     showSnackbarLongWithAction(
@@ -314,7 +317,7 @@ class HomeScanFragment : Fragment(R.layout.fragment_scan_home) {
                 buttonGalleryScan.setOnClickListener {
                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
                     reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
-                    selectImageRequest.launch(cropImageCameraOptions)
+                    selectImageRequest.launch(cropImageGalleryOptions)
                 }
                 animationView.repeatCount = 2
             }

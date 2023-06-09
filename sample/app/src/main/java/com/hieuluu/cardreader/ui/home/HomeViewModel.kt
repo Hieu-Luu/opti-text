@@ -22,6 +22,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.common.InputImage
+import com.hieuluu.cardreader.BuildConfig
 import com.hieuluu.cardreader.data.datastore.AppPreferences
 import com.hieuluu.cardreader.data.persistence.entity.FilteredTextModel
 import com.hieuluu.cardreader.data.persistence.entity.Scan
@@ -118,7 +119,7 @@ class HomeViewModel(
                     content = extractedModel.content
                 )
                 filteredTextModelRepo.insertModel(model)
-                Log.d("hieult", "createScan: model inserted ${model.content}")
+                if (BuildConfig.DEBUG) Log.d("hieult", "createScan: model inserted ${model.content}")
             }
 
             if(homeFragActive) {
