@@ -49,6 +49,7 @@ import com.hieuluu.cardreader.ui.home.reward.setupComposeSnackBar
 import com.hieuluu.cardreader.util.collectFlow
 import com.hieuluu.cardreader.util.getColor
 import com.hieuluu.cardreader.util.parcelable
+import com.hieuluu.cardreader.util.safeNav
 import com.hieuluu.cardreader.util.showCameraPermissionInfoDialog
 import com.hieuluu.cardreader.util.showSnackbarLongWithAction
 import com.hieuluu.cardreader.util.showSnackbarShort
@@ -153,10 +154,10 @@ class HomeScanFragment : Fragment(R.layout.fragment_scan_home) {
                                 onScanClicked {
                                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
                                     reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
-//                                    val action = HomeScanFragmentDirections.toDetailScanFragment(it.scanId.toInt(), 0)
-//                                    findNavController().safeNav(action).also {
-//                                        viewModel.moveAwayFromScreen()
-//                                    }
+                                    val action = HomeScanFragmentDirections.toDetailScanFragment(it.scanId.toInt(), 0)
+                                    findNavController().safeNav(action).also {
+                                        viewModel.moveAwayFromScreen()
+                                    }
                                 }
                             }
                         }
@@ -174,10 +175,10 @@ class HomeScanFragment : Fragment(R.layout.fragment_scan_home) {
                                 onScanClicked {
                                     exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
                                     reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
-//                                    val action = HomeScanFragmentDirections.toDetailScanFragment(it.scanId.toInt(), 0)
-//                                    findNavController().safeNav(action).also {
-//                                        viewModel.moveAwayFromScreen()
-//                                    }
+                                    val action = HomeScanFragmentDirections.toDetailScanFragment(it.scanId.toInt(), 0)
+                                    findNavController().safeNav(action).also {
+                                        viewModel.moveAwayFromScreen()
+                                    }
                                 }
                             }
                         }
@@ -246,8 +247,8 @@ class HomeScanFragment : Fragment(R.layout.fragment_scan_home) {
         collectFlow(viewModel.events) { homeEvents ->
             when (homeEvents) {
                 is HomeEvents.ShowCurrentScanSaved -> {
-//                    val action = HomeScanFragment.toDetailScanFragment(homeEvents.id, 1)
-//                    findNavController().safeNav(action)
+                    val action = HomeScanFragmentDirections.toDetailScanFragment(homeEvents.id, 1)
+                    findNavController().safeNav(action)
                 }
                 is HomeEvents.ShowLoadingDialog -> {
                     binding.cardViewLoading.animate().translationX(0f)
