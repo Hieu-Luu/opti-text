@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.relay'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
     id 'org.jetbrains.kotlin.android'
@@ -14,6 +15,8 @@ android {
         applicationId "com.hieuluu.cardreader"
         minSdk 21
         targetSdk 33
+        multiDexEnabled true
+
         versionCode 1
         versionName "1.0"
 
@@ -24,12 +27,16 @@ android {
     }
 
     buildTypes {
-        proguard {
-            debuggable false
-            minifyEnabled true
-            shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
+        debug {
+            isDefault true
+            minifyEnabled false
         }
+//        proguard {
+//            debuggable false
+//            minifyEnabled true
+//            shrinkResources true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard.cfg'
+//        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -45,6 +52,7 @@ android {
     buildFeatures {
         compose true
         viewBinding = true
+        buildConfig = true // Enable BuildConfig only for modules that need it
     }
     composeOptions {
         kotlinCompilerExtensionVersion "1.4.7"

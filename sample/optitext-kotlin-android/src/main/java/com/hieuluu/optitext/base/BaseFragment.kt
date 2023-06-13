@@ -13,8 +13,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.multidex.BuildConfig
 import androidx.viewbinding.ViewBinding
+import com.hieuluu.optitext.BuildConfig
 import java.lang.Exception
 
 /**

@@ -12,8 +12,6 @@ android {
         targetSdk 33
         multiDexEnabled true
 
-        versionCode 1
-        versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -26,10 +24,10 @@ android {
         debug {
             isDefault true
             minifyEnabled false
-            proguardFiles 'proguard-rules.pro'
+//            proguardFiles 'proguard-rules.pro'
         }
-        proguard {
-        }
+//        proguard {
+//        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -47,6 +45,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 

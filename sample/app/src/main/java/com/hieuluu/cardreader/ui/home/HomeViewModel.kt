@@ -119,7 +119,7 @@ class HomeViewModel(
                     content = extractedModel.content
                 )
                 filteredTextModelRepo.insertModel(model)
-                if (BuildConfig.DEBUG) Log.d("hieult", "createScan: model inserted ${model.content}")
+//                if (BuildConfig.DEBUG) Log.d("hieult", "createScan: model inserted ${model.content}")
             }
 
             if(homeFragActive) {
