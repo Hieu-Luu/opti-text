@@ -5,6 +5,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
 android {
