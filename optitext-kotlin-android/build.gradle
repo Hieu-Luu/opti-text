@@ -134,3 +134,56 @@ configurations {
     // com.google.guava:guava and com.google.guava:listenablefuture together.
     all*.exclude group: 'com.google.guava', module: 'listenablefuture'
 }
+
+//publishing {
+//    publications {
+//        register<MavenPublication>("release") {
+//            groupId = "https://github.com/Hieu-Luu"
+//            artifactId = "opti-text"
+//            version = "0.0.1-beta"
+//
+//            afterEvaluate {
+//                from(components["release"])
+//            }
+//        }
+//    }
+//}
+
+publishing {
+    publications {
+        myPublication(MavenPublication) {
+//            from components.java
+//            artifact sourceJar
+            groupId = "https://github.com/Hieu-Luu"
+            artifactId = "opti-text"
+            version = "0.0.1-beta"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+            pom {
+                name = "OptiText"
+                description = "A build-in text recognition scanner library using MLKit"
+                url = "https://github.com/Hieu-Luu/opti-text"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "hieuluu"
+                        name = "Hieu Luu"
+                        email = "trunghieu.luu@gmail.com"
+                    }
+                }
+//                scm {
+//                    connection = "scm:svn:http://subversion.example.com/svn/project/trunk/"
+//                    developerConnection = "scm:svn:https://subversion.example.com/svn/project/trunk/"
+//                    url = "http://subversion.example.com/svn/project/trunk/"
+//                }
+            }
+        }
+    }
+}
