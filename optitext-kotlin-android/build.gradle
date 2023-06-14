@@ -154,7 +154,7 @@ publishing {
         myPublication(MavenPublication) {
 //            from components.java
 //            artifact sourceJar
-            groupId = "https://github.com/Hieu-Luu"
+            groupId = "com.hieuluu"
             artifactId = "opti-text"
             version = "0.0.1-beta"
 
