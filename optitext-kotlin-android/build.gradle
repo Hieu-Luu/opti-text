@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -147,7 +147,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'com.github.Hieu-Luu'
             artifactId = 'opti-text'
-            version = '0.0.1-beta02'
+            version = '0.0.1-beta03'
 
             afterEvaluate {
                 from components.release
